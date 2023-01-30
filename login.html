@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <style></style>
+    <form action="#" class="login__form" method="post" name="myform">
+      <div class="login__form-field">
+        <label class="login__form-label" for="name">Username</label>
+        <input
+          placeholder="Enter Your Username"
+          type="text"
+          class="login__form-input"
+          name="username"
+          id="username"
+        />
+        <span class="error-message" id="username-error"></span>
+      </div>
+      <div class="login__form-field">
+        <label class="login__form-label" for="password">password</label>
+        <input
+          placeholder="Enter Your password"
+          type="password"
+          class="login__form-input"
+          name="password"
+          id="password"
+        />
+        <span class="error-message" id="password-error"></span>
+      </div>
+      <a href="admindashboard.html">
+        <button type="submit" class="btn btn--theme login__btn" id="submit-btn">
+          Login
+        </button>
+      </a>
+    </form>
+  </body>
+</html>

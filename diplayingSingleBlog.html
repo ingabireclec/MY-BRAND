@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Blog</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="header-logo-container">
+        <div class="header-logo-img-container">
+          <img src=".\trialpic.png" class="header-logo-img" />
+        </div>
+        <span class="header-logo-sub">Clemence INGABIRE</span>
+
+      </div>
+      <div class="header-main">
+        <ul class="header-links">
+          <div class="header__main-ham-menu-cont">
+            <img
+              src="https://d33wubrfki0l68.cloudfront.net/79e75114856ae61628d2ad26504e3ff4ab2c71b6/f06a4/assets/svg/ham-menu.svg"
+              alt="hamburger menu" class="header__main-ham-menu">
+            <img
+              src="https://d33wubrfki0l68.cloudfront.net/de2a681c8ca1630b29949b3a34bf158a686a0554/6a0ec/assets/svg/ham-menu-close.svg"
+              alt="hamburger menu close" class="header__main-ham-menu-close d-none">
+          </div>
+          <li class="header-link-wrapper">
+            <a href="./" class="header-link">Home</a>
+          </li>
+          <li class="header-link-wrapper">
+            <a href="./#about" class="header-link">About</a>
+          </li>
+          <li class="header-link-wrapper">
+            <a href="./#project" class="header-link">Projects</a>
+          </li>
+          <li class="header-link-wrapper">
+            <a href="./#contact" class="header-link">Contacts</a>
+          </li>
+          <li class="header-link-wrapper">
+            <a href="./#blog" class="header-link">Blogs</a>
+          </li>
+          <li class="header-link-wrapper">
+            <a href="./#login" class="header-link">Login</a>
+          </li>
+        </ul>
+        <!-- check the usage -->
+        <div class="header__main-ham-menu-cont">
+          <img
+            src="https://d33wubrfki0l68.cloudfront.net/79e75114856ae61628d2ad26504e3ff4ab2c71b6/f06a4/assets/svg/ham-menu.svg"
+            alt="hamburger menu" class="header__main-ham-menu " />
+          <img
+            src="https://d33wubrfki0l68.cloudfront.net/de2a681c8ca1630b29949b3a34bf158a686a0554/6a0ec/assets/svg/ham-menu-close.svg"
+            alt="hamburger menu close" class="header__main-ham-menu-close" />
+        </div>
+      </div>
+    </div>
+    <div class="header-sm-menu ">
+      <div class="header-sm-menu-content">
+        <ul class="header-sm-menu-links">
+          <li class="header-sm-menu-link">
+            <a href="./"> Home </a>
+          </li>
+          <li class="header-sm-menu-link">
+            <a href="#about"> About </a>
+          </li>
+          <li class="header-sm-menu-link">
+            <a href="#projects"> Projects</a>
+          </li>
+          <li class="header-sm-menu-link">
+            <a href="#contact"> Contact </a>
+          </li>
+          <li class="header-sm-menu-link">
+            <a href="#login"> Login </a>
+          </li>
+          <li class="header-sm-menu-link">
+            <a href="#blog"> Blogs </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="main-container">
+    <div class="single-blog">
+      <div class="post-img">
+        <img class="blog__img" loading="lazy" />
+      </div>
+      <div class="blog-body">
+        <h3 class="blog-title"></h3>
+        <div class="blog-content"></div>
+      </div>
+    </div>
+    <div class="comments">
+      <div class="comment-sec">
+        <h1>Comments</h1>
+            <!-- <div class="comment-container ">
+                <h3>avatar 1</h3>
+                <p class="comment-text">i love it,what u said,huge deal.i think you should pursue it.i love it,what u said,huge deal.i think you should pursue it</p>
+            </div>
+            <div class="comment-container">
+                <h3>angel</h3>
+                <p class="comment-text">Switching to boxicons is easy and can be done in 2 steps. There are more features than just the icons set. Boxicons also follows the official Google Material Design guidelines</p>
+            </div> -->
+      </div>
+      <div class="contact__form-field comment-field">
+        <form class="form_container">
+          <label class="contact__form-label" for="name">Name</label>
+          <input placeholder="Enter Your Name" type="text" class="contact__form-input commentor" name="name"
+            id="name" />
+          <span class="error-message" id="name-error"></span>
+          <textarea cols="30" rows="10" class="contact__form-input" placeholder="Leave your comment ..." name="message"
+            id="message" data-gramm="false" wt-ignore-input="true"></textarea>
+          <span class="error-message" id="comment-error"></span>
+          <button type="submit" class="btn btn--theme comment-submit__btn">
+            submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <script>
+    const hamMenuBtn = document.querySelector('.header__main-ham-menu-cont')
+    const smallMenu = document.querySelector('.header-sm-menu')
+    const headerHamMenuBtn = document.querySelector('.header__main-ham-menu')
+    const headerHamMenuCloseBtn = document.querySelector(
+      '.header__main-ham-menu-close'
+    )
+    const headerSmallMenuLinks = document.querySelectorAll('.header-sm-menu-link')
+
+    hamMenuBtn.addEventListener('click', () => {
+      if (smallMenu.classList.contains('header__sm-menu--active')) {
+        smallMenu.classList.remove('header__sm-menu--active')
+      } else {
+        smallMenu.classList.add('header__sm-menu--active')
+      }
+      if (headerHamMenuBtn.classList.contains('d-none')) {
+        headerHamMenuBtn.classList.remove('d-none')
+        headerHamMenuCloseBtn.classList.add('d-none')
+      } else {
+        headerHamMenuBtn.classList.add('d-none')
+        headerHamMenuCloseBtn.classList.remove('d-none')
+      }
+    })
+
+    for (let i = 0; i < headerSmallMenuLinks.length; i++) {
+      headerSmallMenuLinks[i].addEventListener('click', () => {
+        smallMenu.classList.remove('header__sm-menu--active')
+        headerHamMenuBtn.classList.remove('d-none')
+        headerHamMenuCloseBtn.classList.add('d-none')
+      })
+    }
+
+    // ---
+    const headerLogoConatiner = document.querySelector('.header-logo-container')
+
+    headerLogoConatiner.addEventListener('click', () => {
+      location.href = '/'
+    })
+      ;</script>
+  <script type="text/javascript" src="commentFormValidation.js"></script>
+  <script type="text/javascript" src="commentLocalStorage.js"></script>
+  <!-- <script type="text/javascript" src="comment.js"></script> -->
+  <script type="text/javascript" src="displayingSingleBlog.js"></script>
+</body>
+
+</html>

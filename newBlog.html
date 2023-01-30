@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New post</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.17/css/froala_editor.min.css" integrity="sha512-MQMcuu7nbtekrEV/+KXG3INNq4CYNkmbnO1UcdvhE8+VYIdf0Jf1xAcvuG77xxpzIPpyvHL/ws0yBW7D49xFrA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.17/js/froala_editor.min.js" integrity="sha512-ccmoHLSr8C18DugVUXvUYUysen8GpqNYRCI/4zO9Ol39cT/VwLjfK21MC6tAMcEL4LMVi5OwzvXlpneQN2QfGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
+
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bxl-c-plus-plus"></i>
+        <span class="logo_name">Clemence</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="admindashboard.html" class="">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name"> Dashboard </span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="">
+            <i class="bx bxs-contact"></i>
+            <span class="links_name"> Contacts </span>
+          </a>
+        </li>
+        <li>
+          <a href="dashboard-blogs.html" class="active">
+            <i class="bx bxl-blogger"></i>
+            <span class="links_name"> blogs </span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard">New Blog</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search"></i>
+        </div>
+        <div class="profile-details">
+          <span class="admin_name">clemence</span>
+          <i class="bx bx-chevron-down"></i>
+        </div>
+      </nav>
+      <section class="edit-main">
+        <div class="edit-content">
+          <div>
+            <h2 class="edit-text-color edit-heading">Add Blog</h2>
+          </div>
+          <p>BLOG</p>
+      <form class="article-form"> 
+        <label class="Edit">
+        <span class="edit-text-color">Title</span>
+        <input class="edit-input" placeholder="title" type="text" name="title" id="title-input" />
+      </label>
+      <label class="Edit">
+        <span class="edit-text-color">Description</span>
+        <div >
+          <textarea id="froala"></textarea>
+        </div>
+      </label>
+      <label class="Edit">
+        <span class="edit-text-color">Blog category</span>
+        <select class="edit-input" id="category">
+          <option class="edit-text-color">Tech</option>
+          <option class="edit-text-color">Life</option>
+          <option class="edit-text-color">Others</option>
+        </select>
+      </label>
+      <div class="edit-image">
+        <span class="edit-text-color"> Featured Image</span>
+        <label class="lbl">
+          <p class="Edit">Click to select file(s)</p>
+          <input accept="image/x-png,image/gif,image/jpeg" class="hidden" type="file" id="featured-img" />
+        </label>
+        <button id="submit" type="submit" class="btn-save" >Upload</button>
+      </div>
+    </div>
+  </form>
+      </section>
+    </section>
+    <script> var editor = new FroalaEditor('#froala'); </script>
+    <script type="text/javascript" src="blogValidation.js"></script>
+    <script type="text/javascript" src="storageBlogs.js"></script>
+
+  </body>
+</html>

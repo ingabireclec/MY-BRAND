@@ -1,0 +1,27 @@
+<div class="contact__form-field">
+  <label class="contact__form-label" for="name">Name</label>
+  <input
+    minlength="3"
+    placeholder="Enter Your Name"
+    type="text"
+    class="contact__form-input"
+    name="name"
+    id="name"
+  />
+  <i class="fa-solid fa-circle-check" id="name-valid"></i>
+  <i class="fa-sharp fa-solid fa-circle-exclamation" id="name-invalid"></i>
+  <span class="error-message" id="name-error"
+    >Minimum 3 characters required</span
+  >
+</div>
+
+form.addEventListener("submit", function(event) { event.preventDefault(); const
+name = document.getElementById("name"); const nameValid =
+document.getElementById("name-valid"); const nameInvalid =
+document.getElementById("name-invalid"); const nameError =
+document.getElementById("name-error"); if (name.value.length >= 3) {
+nameValid.style.display = "block"; nameInvalid.style.display = "none";
+nameError.style.display = "none"; } else { nameValid.style.display = "none";
+nameInvalid.style.display = "block"; nameError.style.display = "block"; } }); //
+css #name-valid, #name-invalid { display: none; } .error-message { display:
+none; color: red; }
