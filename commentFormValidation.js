@@ -42,4 +42,19 @@ form.addEventListener("submit", (e) => {
   }
 
   // form is valid, submit the form
+  const commentInput = document.querySelector("#message");
+  const commentStoreKey = "comments";
+  const comments = JSON.parse(localStorage.getItem(commentStoreKey)) || [];
+  const url = new URLSearchParams(window.location.search);
+  const blogId = url.get("id"); // param id
+
+  const comment = {
+    id: comments.length + 1,
+    blogId: blogId,
+    name: nameInput.value,
+    comment: commentInput.value,
+  };
+
+  comments.push(comment);
+  localStorage.setItem(commentStoreKey, JSON.stringify(comments));
 });
