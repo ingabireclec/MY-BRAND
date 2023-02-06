@@ -1,6 +1,7 @@
 import express from "express";
 import Blog from "../models/Blog.js";
 import { uploadImage } from "../services/cloudinary.js";
+import validateBlog from "../validations/validateBlogs.js";
 import fs from "fs";
 
 export const httpCreateBlog = async (req, res) => {

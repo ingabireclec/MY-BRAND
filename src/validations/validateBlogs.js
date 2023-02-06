@@ -1,12 +1,12 @@
-import joi from "joi";
-const blogSchema = joi.object({
-  title: joi.string().required().messages({
+import Joi from "joi";
+const blogSchema = Joi.object({
+  title: Joi.string().required().messages({
     "string.empty": "Title is required",
   }),
-  description: joi.string().required().messages({
+  description: Joi.string().required().messages({
     "string.empty": "Description is required",
   }),
-  category: joi.string().required().messages({
+  category: Joi.string().required().messages({
     "string.empty": "Category is required",
   }),
 });
