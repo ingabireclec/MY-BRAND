@@ -2,15 +2,18 @@ import mongoose from "mongoose";
 const BlogSchema = mongoose.Schema({
   title: {
     type: String,
-    require: true,
+    required: true,
   },
   description: {
     type: String,
-    require: true,
+    required: true,
   },
   category: {
     type: String,
-    require: true,
+    required: true,
+  },
+  image: {
+    type: String,
   },
 });
 const Blog = mongoose.model("Blog", BlogSchema);

@@ -7,7 +7,7 @@ mongoose.connection.once("open", () => {
   console.log("database connected!!");
 });
 mongoose.connection.on("open", () => {
-  console.log("error happened");
+  console.log("database connection still live");
 });
 const mongoConnect = async () => {
   await mongoose.connect(MONGO_URL);

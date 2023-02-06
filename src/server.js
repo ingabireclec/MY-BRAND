@@ -9,6 +9,7 @@ app.listen(PORT, () => {
   console.log(`The server is running on port ${PORT}`);
 });
 await mongoConnect();
+//image config
 // const startServer = async () => {
 //   await mongoConnect();
 //   server.listen(PORT, () => {

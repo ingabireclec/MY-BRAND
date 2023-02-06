@@ -1,5 +1,6 @@
 import Joi from "joi";
-const contactSchema = joi.object({
+
+const contactSchema = Joi.object({
   name: Joi.string().required().messages({
     "string.empty": "Name is required",
   }),
@@ -11,7 +12,9 @@ const contactSchema = joi.object({
     "string.empty": "Message is required",
   }),
 });
+
 const validateQueries = (contactData) => {
-  return contactSchema.validate(contactData);
+  return contactSchema.validate(contactData, { abortEarly: false });
 };
+
 export default validateQueries;

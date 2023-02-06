@@ -1,8 +1,23 @@
+import express from "express";
 import Contact from "../models/Contact.js";
-// const router = express.Router();
+import validateQueries from "../validations/validateQueries.js";
+
 const httpCreateContact = async (req, res) => {
+  const { error } = validateQueries(req.body);
+  if (error) {
+    return res.status(400).json({
+      success: false,
+      message: error.message,
+      error: error.details,
+    });
+  }
+
   try {
-    const contact = new Contact(req, body);
+    const contact = new Contact({
+      name: req.body.name,
+      email: req.body.email,
+      message: req.body.message,
+    });
     await contact.save();
     return res.status(201).json({
       success: true,
@@ -17,12 +32,13 @@ const httpCreateContact = async (req, res) => {
     });
   }
 };
+
 const httpDisplayContacts = async (req, res) => {
   try {
     const contacts = await Contact.find();
     return res.status(201).json({
       success: true,
-      message: "contact created successfully",
+      message: "contacts retrieved successfully",
       contacts,
     });
   } catch (error) {
@@ -34,5 +50,7 @@ const httpDisplayContacts = async (req, res) => {
   }
 };
 
-export default httpCreateContact;
-httpDisplayContacts;
+export default {
+  httpCreateContact,
+  httpDisplayContacts,
+};

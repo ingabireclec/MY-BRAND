@@ -1,9 +1,8 @@
 import { Router } from "express";
-import httpCreateContact from "../controllers/queriesController.js";
-import httpDisplayContacts from "../controllers/queriesController.js";
+import queriesController from "../controllers/queriesController.js";
 
-const queriesrouter = Router();
-router.post("/", httpCreateContact);
-router.get("/", httpDisplayContacts);
+const queriesRouter = Router();
+queriesRouter.post("/", queriesController.httpCreateContact);
+queriesRouter.get("/", queriesController.httpDisplayContacts);
 
-export default queriesrouter;
+export default queriesRouter;

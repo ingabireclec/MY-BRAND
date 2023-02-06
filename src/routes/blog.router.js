@@ -5,11 +5,13 @@ import {
   httpUpdateBlog,
   httpDeleteBlog,
 } from "../controllers/blogController.js";
-
+//import upload from "../services/multer.js";
+import multer from "multer";
+const upload = multer({ dest: "uploads/" });
 const Blogrouter = Router();
-Blogrouter.post("/", httpCreateBlog);
+Blogrouter.post("/", upload.single("image"), httpCreateBlog);
 Blogrouter.get("/", httpDisplayBlog);
-Blogrouter.patch("/", httpUpdateBlog);
+Blogrouter.patch("/:id", httpUpdateBlog);
 Blogrouter.delete("/", httpDeleteBlog);
 
 export default Blogrouter;
