@@ -20,10 +20,10 @@ form.addEventListener("submit", function (event) {
   const usernameValue = username.value;
   const passwordValue = password.value;
   const loginData = {
-    username: `${usernameValue}`,
+    email: `${usernameValue}`,
     password: `${passwordValue}`,
   };
-  console.log(loginData);
+  const jsonData = JSON.stringify(loginData);
   // Make the API call to log in the user
   fetch("https://mybrand-backend-war7.onrender.com/api/login", {
     method: "POST",
@@ -31,9 +31,7 @@ form.addEventListener("submit", function (event) {
       "Content-Type": "application/json",
       accept: "application/json",
     },
-    body: JSON.stringify({
-      loginData,
-    }),
+    body: jsonData,
   })
     .then((response) => response.json())
     .then((data) => {
