@@ -6,6 +6,7 @@ const nameError = document.querySelector("#name-error");
 const messageError = document.querySelector("#comment-error");
 
 // form submit event listener
+//
 form.addEventListener("submit", (e) => {
   e.preventDefault(); // prevent form submission
 
