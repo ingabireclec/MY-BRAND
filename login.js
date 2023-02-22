@@ -1,4 +1,3 @@
-// Get the form and input elements
 const form = document.getElementById("login-form");
 const username = document.getElementById("username");
 const password = document.getElementById("password");
@@ -12,45 +11,40 @@ username.addEventListener("input", function () {
 password.addEventListener("input", function () {
   passwordError.innerHTML = "";
 });
+
 form.addEventListener("submit", function (event) {
   // Prevent the form from submitting
   event.preventDefault();
-  console.log("username.value", username.value);
 
-  // Check if the input fields are empty or not
-  if (username.value === "") {
-    usernameError.innerHTML = "Username is required";
-    username.classList.add("incorrect");
-    username.classList.remove("correct");
-  }
-  if (!password.value) {
-    passwordError.innerHTML = "Password is required";
-    password.classList.add("incorrect");
-    password.classList.remove("correct");
-  }
-  if (username.value.length < 4) {
-    usernameError.innerHTML = "Username must be at least 4 characters";
-    username.classList.add("incorrect");
-    username.classList.remove("correct");
-  }
-  if (password.value.length < 8) {
-    passwordError.innerHTML = "Password must be at least 8 characters";
-    password.classList.add("incorrect");
-    password.classList.remove("correct");
-  }
-  if (
-    username.value &&
-    password.value &&
-    username.value.length >= 4 &&
-    password.value.length >= 8
-  ) {
-    password.classList.remove("incorrect");
-    password.classList.add("correct");
-    username.classList.remove("incorrect");
-    username.classList.add("correct");
-    localStorage.setItem("auth_status", "on");
-    window.location.href = "admindashboard.html";
-    // if (localStorage.getItem("auth_status") === "on") {
-    //   console.log("User is authenticated");
-  }
+  // Get the input field values
+  const usernameValue = username.value;
+  const passwordValue = password.value;
+  const loginData = {
+    username: `${usernameValue}`,
+    password: `${passwordValue}`,
+  };
+  console.log(loginData);
+  // Make the API call to log in the user
+  fetch("https://mybrand-backend-war7.onrender.com/api/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify({
+      loginData,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      // Store the access token in local storage
+      localStorage.setItem("access_token", data?.token);
+
+      // Redirect to the admin dashboard page
+      window.location.href = "admindashboard.html";
+    })
+    .catch((error) => {
+      passwordError.innerHTML = error.message;
+    });
 });

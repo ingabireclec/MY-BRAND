@@ -312,7 +312,8 @@ a {
 }
 .btn:hover,
 .contact__btn:hover,
-.login__btn:hover {
+.login__btn:hover,
+.btn-save:hover {
   background-color: #cdaa0e;
   transition: all 0.3s;
 }

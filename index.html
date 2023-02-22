@@ -354,19 +354,76 @@
         </div>
       </div>
     </section>
+    <section id="signUp" class="login sec-pad dynamicBg">
+      <div class="main-container">
+        <h2 class="heading heading-sec heading-sec__mb-med">
+          <span class="heading-sec__main heading-sec__main--lt">Register</span>
+        </h2>
+        <div class="login__form-container">
+          <form action="#" id="signUp-form" class="login__form" method="post" >       
+             
+            
+            <div class="login__form-field">
+              <label class="login__form-label" for="name">Names</label>
+              <input
+              
+              placeholder="Enter Your names"
+              type="text"
+              class="login__form-input "
+              name="username"
+              id="names"
+            />
+            <span class="error-message" id="name-error"></span>
+            </div>
+            <div class="login__form-field">
+              <label class="login__form-label" for="email">Email</label>
+              <input
+              
+              placeholder="Enter Your Email"
+              type="text"
+              class="login__form-input "
+              name="email"
+              id="Email"
+            />
+            <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+
+            <span class="error-message" id="Email-error"></span>
+            </div>
+            <div class="login__form-field">
+              <label class="login__form-label" for="password">password</label>
+              <input
+              placeholder="Enter Your password"
+              type="password"
+              class="login__form-input"
+              name="password"
+              id="Password"
+            />
+
+            <span class="error-message" id="Password-error"></span>
+            
+            </div>
+            <a href="">
+            <button type="submit" class="btn btn--theme login__btn" id="register-btn">
+              Register
+            </button>
+          </a>
+          </form>
+      </div>
+
+    </section>
     <section id="login" class="login sec-pad dynamicBg">
       <div class="main-container">
         <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main heading-sec__main--lt">Sign in</span>
+          <span class="heading-sec__main heading-sec__main--lt">Login</span>
         </h2>
         <div class="login__form-container">
           <form action="#" id="login-form" class="login__form" method="post" >       
              
             <div class="login__form-field">
-              <label class="login__form-label" for="name">Username</label>
+              <label class="login__form-label" for="name">Email</label>
               <input
               
-              placeholder="Enter Your Username"
+              placeholder="Enter Your email"
               type="text"
               class="login__form-input "
               name="username"
@@ -515,10 +572,12 @@
      
 </script>
 <script type="text/javascript" src="login.js"></script>
+<script type="text/javascript" src="signUp.js"></script>
+
 <script type="text/javascript" src="contactFormValid.js"></script>
 <!-- <script type="text/javascript" src="queriesLocalStorage.js"></script> -->
 <script type="text/javascript" src="dashboard-blogs.js"></script>
-<!-- <script type="text/javascript" src="displayingSingleBlog.js"></script> -->
+<!-- <script type="text/javascript" src="signUp.js"></script> -->
 
 </body>
 </html>
