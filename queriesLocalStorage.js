@@ -35,25 +35,24 @@
 //   .then((res) => res.json())
 //   .then((data) => console.log(data))
 //   .catch((error) => console.log(error));
-// // });
-const nameInput = document.querySelector("#name");
-const emailInput = document.querySelector("#email");
-const messageInput = document.querySelector("#message");
+// //});
 const submitBtn = document.querySelector(".contact__btn");
 submitBtn.addEventListener("click", function (e) {
   e.preventDefault();
 
+  // Get form input values
   const nameInput = document.querySelector("#name").value;
   const emailInput = document.querySelector("#email").value;
   const messageInput = document.querySelector("#message").value;
-  //create object
+
+  // Create contact object
   const contact = {
-    name: `${nameInput}`,
-    email: `${emailInput}`,
-    message: `${messageInput}`,
+    name: nameInput,
+    email: emailInput,
+    message: messageInput,
   };
   console.log(contact);
-  // Send POST request to server
+  // Make POST request
   fetch("https://mybrand-backend-war7.onrender.com/api/messages/", {
     method: "POST",
     headers: {

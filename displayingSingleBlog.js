@@ -55,6 +55,7 @@
 window.onload = () => {
   const blogStoreKey = "blogs";
   const storedBlogs = localStorage.getItem(blogStoreKey);
+  const token = localStorage.getItem("access_token");
 
   if (storedBlogs) {
     let blogs = JSON.parse(storedBlogs);
@@ -73,28 +74,87 @@ window.onload = () => {
             blog.title || "Fallback";
 
           // update the blog content
-          document.querySelector(".blog-content").innerHTML = blog.content;
+          document.querySelector(".blog-content").innerHTML =
+            blog.description || "";
 
           // fetch comments for this blog
-          fetch(`https://example.com/api/blogs/${id}/comments`)
+          fetch(
+            `https://mybrand-backend-war7.onrender.com/api/blogs/${id}/comments`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
             .then((response) => response.json())
             .then((comments) => {
-              comments.forEach((comment) => {
+              console.log(comments);
+
+              comments.comments.forEach((comment) => {
                 const commentsSection = document.querySelector(".comment-sec");
 
                 const commentDiv = document.createElement("div");
                 commentDiv.classList.add("comment-container");
 
                 const commentAuthor = document.createElement("h3");
-                commentAuthor.textContent = comment.name;
+                commentAuthor.textContent = comment.author;
 
                 const commentText = document.createElement("p");
                 commentText.classList.add("comment-text");
-                commentText.textContent = comment.comment;
+                commentText.textContent = comment.commentText;
 
                 commentDiv.appendChild(commentAuthor);
                 commentDiv.appendChild(commentText);
                 commentsSection.appendChild(commentDiv);
+              });
+
+              // add event listener to submit button
+              const submitBtn = document.querySelector(".comment-submit__btn");
+              submitBtn.addEventListener("click", (event) => {
+                event.preventDefault();
+                const commentor = document.querySelector(".commentor").value;
+                const message = document.querySelector("#message").value;
+                const blogId = id;
+
+                fetch(
+                  `https://mybrand-backend-war7.onrender.com/api/blogs/${id}/comments`,
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({
+                      author: commentor,
+                      commentText: message,
+                      blogId: blogId,
+                    }),
+                  }
+                )
+                  .then((response) => response.json())
+                  .then((comment) => {
+                    console.log(comment);
+
+                    const commentsSection =
+                      document.querySelector(".comment-sec");
+
+                    const commentDiv = document.createElement("div");
+                    commentDiv.classList.add("comment-container");
+
+                    const commentAuthor = document.createElement("h3");
+                    commentAuthor.textContent = comment.author;
+
+                    const commentText = document.createElement("p");
+                    commentText.classList.add("comment-text");
+                    commentText.textContent = comment.commentText;
+
+                    commentDiv.appendChild(commentAuthor);
+                    commentDiv.appendChild(commentText);
+                    commentsSection.appendChild(commentDiv);
+                  })
+                  .catch((error) =>
+                    console.error("Error adding comment:", error)
+                  );
               });
             })
             .catch((error) => console.error("Error fetching comments:", error));
