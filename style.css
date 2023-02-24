@@ -466,7 +466,7 @@ a {
   align-items: flex-start;
 }
 .blog--row-content-title,
-.edit {
+.icons {
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -1029,6 +1029,20 @@ nav .search-box .bx-search {
 .delete {
   color: #e86786;
 }
+.like-btn {
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 1.5rem;
+  padding: 0;
+  cursor: pointer;
+}
+
+.like-btn.active {
+  color: #f00;
+}
+
 .blog-text {
   display: flex;
   flex-direction: column;

@@ -7,6 +7,7 @@ const emailError = document.getElementById("email-error");
 const checkMark = document.querySelector(".fa-circle-check");
 const exclamation = document.querySelector(".fa-circle-exclamation");
 const Message = document.getElementById("message");
+const token = localStorage.getItem("access_token");
 
 // Add event listeners to the input fields
 

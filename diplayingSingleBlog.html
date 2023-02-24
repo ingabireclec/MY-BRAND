@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>Blog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
 
 <body>
@@ -92,11 +94,18 @@
       <div class="blog-body">
         <h3 class="blog-title"></h3>
         <div class="blog-content"></div>
+        <div class="like-container">
+          <button class="like-btn">
+            <i class="far fa-heart"></i>
+          </button>
+          <span id="like-count">0</span>
+        </div>
+        
       </div>
     </div>
     <div class="comments">
       <div class="comment-sec">
-        <h1 id="commentHeader">Comments (<span id="commentCount">3</span>)</h1>
+        <h1 id="commentHeader">Comments (<span id="commentCount"></span>)</h1>
         <!-- <div class="comment-container ">
                 <h3>avatar 1</h3>
                 <p class="comment-text">i love it,what u said,huge deal.i think you should pursue it.i love it,what u said,huge deal.i think you should pursue it</p>

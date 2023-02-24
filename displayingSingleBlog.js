@@ -2,6 +2,7 @@ window.onload = () => {
   const blogStoreKey = "blogs";
   const storedBlogs = localStorage.getItem(blogStoreKey);
   const token = localStorage.getItem("access_token");
+  let likesCount = document.querySelector("#like-count");
 
   if (storedBlogs) {
     let blogs = JSON.parse(storedBlogs);
@@ -14,6 +15,7 @@ window.onload = () => {
       fetch(`https://mybrand-backend-war7.onrender.com/api/blogs/getOne/${id}`)
         .then((response) => response.json())
         .then((blog) => {
+          console.log(blog);
           // update the blog heading
           document.querySelector(".blog__img").src = blog.image;
           document.querySelector(".blog-title").textContent =
@@ -22,6 +24,7 @@ window.onload = () => {
           // update the blog content
           document.querySelector(".blog-content").innerHTML =
             blog.description || "";
+          likesCount.textContent = blog.likesCount;
 
           // fetch comments for this blog
           fetch(
@@ -54,6 +57,36 @@ window.onload = () => {
                 commentDiv.appendChild(commentAuthor);
                 commentDiv.appendChild(commentText);
                 commentsSection.appendChild(commentDiv);
+              });
+              // fetch likes for this blog
+              const likeBtn = document.querySelector(".like-btn");
+              likeBtn.addEventListener("click", (event) => {
+                event.preventDefault();
+                const blogId = id;
+                fetch(
+                  `https://mybrand-backend-war7.onrender.com/api/blogs/${blogId}/like`,
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({
+                      blogId: blogId,
+                    }),
+                  }
+                )
+                  .then((response) => response.json())
+                  .then(() => {
+                    alert(error);
+                    // update the likes count
+                    likesCount.textContent =
+                      parseInt(likesCount.textContent) + 1;
+                    location.reload();
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
               });
 
               // add event listener to submit button

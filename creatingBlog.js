@@ -25,6 +25,7 @@ submitBtn.addEventListener("click", function (e) {
     .then((data) => {
       if (data) {
         alert("Blog created successfully!");
+        window.location.href = "/dashboard-blogs.html";
       } else {
         alert("There was an error creating the blog.");
       }
