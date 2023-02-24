@@ -43,34 +43,41 @@ window.onload = () => {
         BlogImg.setAttribute("loading", "lazy");
         BlogImg.setAttribute("src", blog.image);
 
-        const BlogTextCon = document.createElement("div");
-        BlogTextCon.setAttribute("class", "blog-text");
-
-        const BlogText = document.createElement("span");
-        BlogText.textContent = blog.title;
-        //create icon
         const span = document.createElement("span");
+        span.setAttribute("class", "icons");
+
         const editicon = document.createElement("i");
         editicon.setAttribute("class", "ri-edit-line edit");
         editicon.onclick = () => {
           window.location.assign(`/editBlog.html?id=${blog._id}`);
         };
+
         let deleteicon = document.createElement("i");
         deleteicon.setAttribute("class", "ri-delete-bin-line delete");
         deleteicon.setAttribute("data-id", blog._id);
-
-        span.appendChild(deleteicon);
         span.appendChild(editicon);
-        BlogBox.appendChild(span);
-        // Add the UI elements to the parent container
-        BlogImgCon.appendChild(BlogImg);
-        BlogBox.appendChild(BlogImgCon);
+        span.appendChild(deleteicon);
+
+        const blogActionsContainer = document.createElement("div");
+        blogActionsContainer.setAttribute("class", "blog-actions");
+        blogActionsContainer.appendChild(BlogAnchor);
+
+        blogActionsContainer.appendChild(span);
+
+        const BlogTextCon = document.createElement("div");
+        BlogTextCon.setAttribute("class", "blog-text");
+
+        const BlogText = document.createElement("span");
+        BlogText.textContent = blog.title;
 
         BlogTextCon.appendChild(BlogText);
-        BlogTextCon.appendChild(BlogAnchor);
+        BlogTextCon.appendChild(blogActionsContainer);
+        BlogImgCon.appendChild(BlogImg);
+        BlogBox.appendChild(BlogImgCon);
         BlogBox.appendChild(BlogTextCon);
 
         blogContainer.appendChild(BlogBox);
+
         deleteicon.addEventListener("click", (event) => {
           event.preventDefault();
           const id = event.target.getAttribute("data-id"); // get id from data attribute
@@ -86,11 +93,8 @@ window.onload = () => {
           )
             .then((response) => response.json())
             .then((data) => {
-              if (data.status === 200) {
-                location.reload();
-              } else {
-                console.log(data.message);
-              }
+              location.reload();
+              alert(data.message);
             });
         });
       }

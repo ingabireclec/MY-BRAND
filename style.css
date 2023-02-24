@@ -313,7 +313,8 @@ a {
 .btn:hover,
 .contact__btn:hover,
 .login__btn:hover,
-.btn-save:hover {
+.btn-save:hover,
+.register__btn:hover {
   background-color: #cdaa0e;
   transition: all 0.3s;
 }
@@ -513,6 +514,13 @@ a {
 .login__btn {
   width: 30%;
   padding: 1rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+}
+.register__btn {
+  width: 30%;
+  padding: 1rem;
   font-size: 1rem;
   border: none;
   border-radius: 25px;
@@ -1021,6 +1029,19 @@ nav .search-box .bx-search {
 .delete {
   color: #e86786;
 }
+.blog-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
 .lbl {
   width: 100%;
   display: flex;
