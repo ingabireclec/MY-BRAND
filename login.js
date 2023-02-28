@@ -3,6 +3,7 @@ const username = document.getElementById("username");
 const password = document.getElementById("password");
 const usernameError = document.getElementById("username-error");
 const passwordError = document.getElementById("password-error");
+const token = localStorage.getItem("access_token");
 
 // Add event listeners to the input fields
 username.addEventListener("input", function () {
@@ -24,14 +25,6 @@ form.addEventListener("submit", function (event) {
     password: `${passwordValue}`,
   };
   const jsonData = JSON.stringify(loginData);
-
-  // Check if the user is already logged in
-  const accessToken = localStorage.getItem("access_token");
-  if (accessToken) {
-    // Redirect to the admin dashboard page
-    window.location.href = "admindashboard.html";
-    return;
-  }
 
   // Make the API call to log in the user
   fetch("https://mybrand-backend-war7.onrender.com/api/login", {
