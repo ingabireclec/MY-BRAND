@@ -40,9 +40,16 @@ form.addEventListener("submit", function (event) {
       console.log(data);
       // Store the access token in local storage
       localStorage.setItem("access_token", data?.token);
+      // localStorage.setItem("email", usernameValue);
 
       // Redirect to the admin dashboard page
       window.location.href = "admindashboard.html";
+      // Get the email of the logged-in user from local storage
+      // const userEmail = localStorage.getItem("email");
+
+      // Set the email as the text content of the admin_name span element
+      // const adminName = document.querySelector(".admin_name");
+      // adminName.textContent = userEmail;
     })
     .catch((error) => {
       passwordError.innerHTML = error.message;
